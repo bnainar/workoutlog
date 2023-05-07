@@ -1,4 +1,5 @@
 <?php
+// validation
 if (empty($_POST["name"])) {
     die("Name is empty");
 }
