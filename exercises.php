@@ -6,12 +6,11 @@ if (empty($_SESSION["user_id"])) {
 }
 $mysqli = require __DIR__ . "/db.php";
 $sql = sprintf(
-    "SELECT * FROM exercises WHERE user_id = '%s' or user_id IS NULL",
+    "SELECT e.id, e.name, e.description, COUNT(w.exercise_id) FROM exercises e LEFT JOIN workouts w ON e.id = w.exercise_id WHERE e.user_id='%s' GROUP BY e.id;",
     $_SESSION["user_id"]
 );
-// $sql = sprintf("SELECT * FROM exercises");
 $res = $mysqli->query($sql);
-$exercise_arr = $res->fetch_all();
+$arr = $res->fetch_all();
 // while ($exercises = $res->fetch_assoc()) {
 //     echo ($exercises["name"]);
 // }
@@ -41,19 +40,16 @@ $exercise_arr = $res->fetch_all();
     <?php if ($res->num_rows === 0) : ?>
         No exercises are added yet. <br>
     <?php else : ?>
-        <?php foreach ($exercise_arr as $exercise) : ?>
+        <?php foreach ($arr as $i) : ?>
             <div>
                 <form action="delete_exercise.php" method="post">
                     <span>
-                        <h3><?= $exercise[1] ?> </h3>
-                        <input type="text" name="id" value="<?= $exercise[0] ?>" style="display:none">
+                        <h3><?= $i[1] ?> </h3>
+                        <input type="text" name="id" value="<?= $i[0] ?>" style="display:none">
                         <input type="submit" value="x">
                     </span>
-                    <?php if ($exercise[3] == NULL) : ?>
-                        no desc <br>
-                    <?php else : ?>
-                        <p><?= $exercise[3] ?></p>
-                    <?php endif; ?>
+                    <p>Description: <?= $i[2] ?></p>
+                    <p>No of workouts logged: <?= $i[3] ?></p>
                 </form>
             </div>
         <?php endforeach; ?>

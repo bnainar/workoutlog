@@ -26,9 +26,9 @@ if (isset($_SESSION["user_id"])) {
         <h2>Exercises</h2>
         <a href="create_exercise.php"><button>Add Exercises +</button></a>
         <a href="exercises.php"><button>See all...</button></a>
-        <h2>Workout logs</h2>
-        <button>Add a workout +</button>
-        <a href=""><button>See all...</button></a>
+        <h2>Workout sessions</h2>
+        <a href="create_session.php"><button>Add a session +</button></a>
+        <a href="sessions.php"><button>See all...</button></a>
     <?php else : ?>
         <p><a href="login.php">Log in</a> or <a href="signup.html">Sign up</a> to use the app.</p>
     <?php endif; ?>
