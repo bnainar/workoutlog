@@ -52,22 +52,20 @@ $arr = $res->fetch_all();
             No exercises are added yet. <br>
         <?php else : ?>
             <?php foreach ($arr as $i) : ?>
-                <a href="history.php?exercise_id=<?= $i[0] ?>">
-                    <div class="card my-3 shadow-sm" style="width: 30rem;">
-                        <div class="card-body">
-                            <form action="delete_exercise.php" method="post">
-                                <span>
-                                    <h3 class="card-title"><?= $i[1] ?> </h3>
-                                    <p class="card-text my-2">Description: <?= $i[2] ?></p>
-                                    <p class="card-text my-2">No of workouts logged: <?= $i[3] ?></p>
-                                    <input type="text" name="id" value="<?= $i[0] ?>" style="display:none">
-                                    <input type="submit" class="btn btn-danger" value="Delete session">
-                                </span>
-
-                            </form>
-                        </div>
+                <div class="card my-3 shadow-sm" style="width: 30rem;">
+                    <div class="card-body">
+                        <form action="" method="">
+                            <span>
+                                <h3 class="card-title"><?= $i[1] ?> </h3>
+                                <p class="card-text my-2">Description: <?= $i[2] ?></p>
+                                <p class="card-text my-2">No of workouts logged: <?= $i[3] ?></p>
+                                <input type="text" name="id" value="<?= $i[0] ?>" style="display:none">
+                                <a href="history.php?exercise_id=<?= $i[0] ?>" class="btn btn-primary">See history</a>
+                                <input type="submit" class="btn btn-outline-danger" value="Delete exercise">
+                            </span>
+                        </form>
                     </div>
-                </a>
+                </div>
             <?php endforeach; ?>
         <?php endif; ?>
     </div>
