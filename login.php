@@ -1,5 +1,10 @@
 <?php
 $is_invalid = false;
+session_start();
+if (!empty($_SESSION["user_id"])) {
+  header("Location: index.php");
+  exit();
+}
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $mysqli = require __DIR__ . "/db.php";
   $sql = sprintf(
@@ -10,7 +15,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $user = $res->fetch_assoc();
   if ($user) {
     if (password_verify($_POST["password"], $user["password_hash"])) {
+      $_SESSION["user_id"] = $user["id"];
       header("Location: index.php");
+      exit();
     }
   }
   $is_invalid = true;
