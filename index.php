@@ -5,6 +5,8 @@ if (isset($_SESSION["user_id"])) {
     $sql = sprintf("SELECT * FROM users WHERE id = '%s'", $_SESSION["user_id"]);
     $res = $mysqli->query($sql);
     $user = $res->fetch_assoc();
+} else {
+    header("Location: login.php");
 }
 ?>
 <!DOCTYPE html>
@@ -20,18 +22,14 @@ if (isset($_SESSION["user_id"])) {
 
 <body>
     <h1>Welcome to WorkoutLog</h1>
-    <?php if (isset($_SESSION["user_id"])) : ?>
-        <p>Hi <?= $user["name"] ?></p>
-        <a href="logout.php">Logout</a>
-        <h2>Exercises</h2>
-        <a href="create_exercise.php"><button>Add Exercises +</button></a>
-        <a href="exercises.php"><button>See all...</button></a>
-        <h2>Workout sessions</h2>
-        <a href="create_session.php"><button>Add a session +</button></a>
-        <a href="sessions.php"><button>See all...</button></a>
-    <?php else : ?>
-        <p><a href="login.php">Log in</a> or <a href="signup.html">Sign up</a> to use the app.</p>
-    <?php endif; ?>
+    <p>Hi <?= $user["name"] ?></p>
+    <a href="logout.php">Logout</a>
+    <h2>Exercises</h2>
+    <a href="create_exercise.php"><button>Add Exercises +</button></a>
+    <a href="exercises.php"><button>See all...</button></a>
+    <h2>Workout sessions</h2>
+    <a href="create_session.php"><button>Add a session +</button></a>
+    <a href="sessions.php"><button>See all...</button></a>
 </body>
 
 </html>
