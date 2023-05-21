@@ -43,69 +43,106 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All workouts in this session</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css" />
-    <style>
-        div:hover {
-            background-color: lightgreen;
-        }
-    </style>
+    <link rel="stylesheet" href="../bootstrap.min.css" />
+    <link rel="stylesheet" href="../styles.css" />
 </head>
 
 <body>
-    <h1>Session Details</h1>
-    <span>
-        <h2>Date: </h2>
-        <p><?= $session[2] ?></p>
-        <h2>Duration: </h2>
-        <p><?= $session[3] ?></p>
-    </span>
-    <span>
-        <h2>Calories Burned: </h2>
-        <p><?= $session[4] ?></p>
-        <h2>Notes: </h2>
-        <p><?= $session[5] ?></p>
-    </span>
-    <a href="edit.php?id=<?= $session[0] ?>"><button>Edit</button></a>
-    <h3>List of all workouts in this session (<?= $res->num_rows ?>)</h3>
+    <div class="container px-0 mx-0" style="min-width:100%;" id="navcont">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary" style="padding:1rem 2rem;">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">WorkoutLogger</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                    <ul class="navbar-nav ">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="../index.php">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../exercises/">Exercises</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="./index.php">Sessions</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Account
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Logout</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="container-lg m-20 px-auto" style="max-width:800px; margin:20px auto;">
+        <h1>Session Details</h1>
+        <div class="row my-3">
+            <div class="col">
+                <h3>Date: </h3>
+                <p><?= $session[2] ?></p>
+                <h3>Duration: </h3>
+                <p><?= $session[3] ?></p>
+            </div>
+            <div class="col">
+                <h3>Calories Burned: </h3>
+                <p><?= $session[4] ?></p>
+                <h3>Notes: </h3>
+                <p><?= $session[5] ?></p>
+            </div>
+            <div class="col"><a href="edit.php?id=<?= $session[0] ?>">
+                    <button class="btn btn-primary btn-lg">Edit Session Details</button></a></div>
+        </div>
 
-    <?php if ($res->num_rows === 0) : ?>
-        No workouts in this session. <br>
-    <?php else : ?>
-        <a href="../workout/create.php?session_id=<?= $_GET["id"] ?>"><button>Add a workout</button></a>
-        <table>
-            <tr>
-                <th>Exercise Name</th>
-                <th>Sets</th>
-                <th>Reps</th>
-                <th>Weight (in kg)</th>
-                <th></th>
-                <th></th>
-            </tr>
+        <h3>List of all workouts in this session (<?= $res->num_rows ?>)</h3>
 
-            <?php foreach ($arr as $i) : ?>
-                <tr>
-                    <td><?= $i[1] ?></td>
-                    <td><?= $i[2] ?></td>
-                    <td><?= $i[3] ?></td>
-                    <td><?= $i[4] ?></td>
-                    <td>
-                        <a href="../workout/edit.php?id=<?= $i[0] ?>&session_id=<?= $_GET["id"] ?>">
-                            <button>Edit</button>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="../workout/delete.php?id=<?= $i[0] ?>&session_id=<?= $_GET["id"] ?>">
-                            <button>Delete</button>
-                        </a>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        </table>
-    <?php endif; ?>
-    <a href="../index.php">Home</a>
-    <a href="index.php">
-        <button>See all sessions</button></a>
+        <?php if ($res->num_rows === 0) : ?>
+            No workouts in this session. <br>
+        <?php else : ?>
+            <a href="../workout/create.php?session_id=<?= $_GET["id"] ?>">
+                <button class="btn btn-primary">Add a workout</button></a>
+            <table class="table table-secondary mt-3">
+                <thead>
 
+                    <tr>
+                        <th scope="col">Exercise Name</th>
+                        <th scope="col">Sets</th>
+                        <th scope="col">Reps</th>
+                        <th scope="col">Weight (in kg)</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($arr as $i) : ?>
+                        <tr>
+                            <td><?= $i[1] ?></td>
+                            <td><?= $i[2] ?></td>
+                            <td><?= $i[3] ?></td>
+                            <td><?= $i[4] ?></td>
+                            <td>
+                                <a href="../workout/edit.php?id=<?= $i[0] ?>&session_id=<?= $_GET["id"] ?>">
+                                    <button class="btn btn-secondary">Edit</button>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="../workout/delete.php?id=<?= $i[0] ?>&session_id=<?= $_GET["id"] ?>">
+                                    <button class="btn btn-danger">Delete</button>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        <?php endif; ?>
+        <a href="index.php">
+            <button class="btn btn-primary">See all sessions</button></a>
+    </div>
 </body>
 
 </html>

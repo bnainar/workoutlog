@@ -34,24 +34,62 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add a session</title>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css" />
+    <link rel="stylesheet" href="../bootstrap.min.css" />
+    <link rel="stylesheet" href="../styles.css" />
 </head>
 
 <body>
-    <h1>Create a Workout Session</h1>
-    <form method="post">
-        <label for="date">Date</label>
-        <input type="datetime-local" name="date" id="date">
-        <label for="duration">Duration (in minutes)</label>
-        <input type="number" name="duration" id="duration" required>
-        <label for="calories">Calories burned</label>
-        <input type="number" name="calories" id="calories" required>
-        <label for="notes">Notes</label>
-        <textarea name="notes" id="notes" cols="60" rows="8"></textarea>
-        <input type="submit" value="Create a session +">
-    </form>
-    <a href="index.php"><button><- View all sessions</button></a>
+    <div class="container px-0 mx-0" style="min-width:100%;" id="navcont">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary" style="padding:1rem 2rem;">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">WorkoutLogger</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                    <ul class="navbar-nav ">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="../index.php">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../exercises/">Exercises</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="./index.php">Sessions</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Account
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Logout</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="container-lg m-20 px-auto" style="max-width:800px; margin:20px auto;">
+        <h1>Create a Workout Session</h1>
+        <form method="post">
+            <label for="date" class="form-label">Date</label>
+            <input type="datetime-local" name="date" id="date" class="form-control" required>
+
+            <label for="duration" class="form-label">Duration (in minutes)</label>
+            <input type="number" name="duration" id="duration" required class="form-control">
+
+            <label for="calories" class="form-label">Calories burned</label>
+            <input type="number" name="calories" id="calories" required class="form-control">
+
+            <label for="notes" class="form-label">Notes</label>
+            <textarea name="notes" id="notes" cols="60" rows="5" class="form-control"></textarea>
+
+            <input type="submit" value="Create a session +" class="btn btn-primary my-3">
+        </form>
+        <a href="index.php"><button class="btn btn-secondary">Cancel</button></a>
+    </div>
 </body>
 
 </html>

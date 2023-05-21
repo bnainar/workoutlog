@@ -1,0 +1,31 @@
+div.container-lg#navcont {
+    background-color: white;
+}
+body {
+    background-color: #EFEBE9 !important;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.card {
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+}
+
+.card:hover {
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important
+}
+input[type="text"],
+input[type="number"],
+input[type="datetime-local"],
+textarea,
+select{
+    max-width: 30rem;
+}
+label{
+    margin-top: 0.7rem;
+}
+#iconcont{
+    width: 10px !important;
+}
