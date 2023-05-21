@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         die("Please fill in required session details");
     }
 
-    $mysqli = require __DIR__ . "/db.php";
+    $mysqli = require dirname(__FILE__, 2) . "/db.php";
     var_dump($_POST);
     $sql = sprintf(
         "INSERT INTO session (user_id, date, duration_minutes, calories_burned, notes) VALUES ('%s','%s','%s','%s','%s')",
@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     );
     try {
         $res = $mysqli->query($sql);
-        header("Location: sessions.php");
+        header("Location: index.php");
         exit();
     } catch (Exception $e) {
         die($mysqli->error . " " . $mysqli->errno);
@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <textarea name="notes" id="notes" cols="60" rows="8"></textarea>
         <input type="submit" value="Create a session +">
     </form>
-    <a href="sessions.php"><button><- View all sessions</button></a>
+    <a href="index.php"><button><- View all sessions</button></a>
 </body>
 
 </html>

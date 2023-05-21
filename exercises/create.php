@@ -7,26 +7,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         die("Exercise name cannot be null");
     }
 
-    $mysqli = require __DIR__ . "/db.php";
+    $mysqli = require dirname(__FILE__, 2) . "/db.php";
     var_dump($_POST);
-    $sql = "";
-    if ($_POST["desc"] === "") {
-        $sql = sprintf(
-            "INSERT INTO exercises (name, user_id) VALUES ('%s','%s')",
-            $mysqli->real_escape_string($_POST["name"]),
-            $mysqli->real_escape_string($_SESSION["user_id"])
-        );
-    } else {
-        $sql = sprintf(
-            "INSERT INTO exercises (name, user_id, description) VALUES ('%s','%s','%s')",
-            $mysqli->real_escape_string($_POST["name"]),
-            $mysqli->real_escape_string($_SESSION["user_id"]),
-            $mysqli->real_escape_string($_POST["desc"])
-        );
-    }
+
+    $sql = sprintf(
+        "INSERT INTO exercises (name, user_id, description) VALUES ('%s','%s','%s')",
+        $mysqli->real_escape_string($_POST["name"]),
+        $mysqli->real_escape_string($_SESSION["user_id"]),
+        $mysqli->real_escape_string($_POST["desc"])
+    );
     try {
         $res = $mysqli->query($sql);
-        header("Location: exercises.php");
+        header("Location: index.php");
         exit();
     } catch (Exception $e) {
         if ($mysqli->errno === 1062) {
@@ -62,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <textarea name="desc" id="desc" cols="60" rows="8"></textarea>
         <input type="submit" value="Create a exercise +">
     </form>
-    <a href="exercises.php"><button><- View all exercises</button></a>
+    <a href="index.php"><button><- View all exercises</button></a>
 </body>
 
 </html>

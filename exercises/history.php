@@ -5,14 +5,22 @@ if (empty($_SESSION["user_id"])) {
     exit();
 }
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
-    $mysqli = require __DIR__ . "/db.php";
-    $sql = sprintf(
+    $mysqli = require dirname(__FILE__, 2) . "/db.php";
+    $wktsql = sprintf(
         "SELECT * FROM workouts WHERE user_id='%s' AND exercise_id='%s'",
         $_SESSION["user_id"],
         $_GET["exercise_id"]
     );
-    $res = $mysqli->query($sql);
-    $arr = $res->fetch_all();
+    $wktres = $mysqli->query($wktsql);
+    $wkt = $wktres->fetch_all();
+
+    $exsql = sprintf(
+        "SELECT * FROM exercises WHERE user_id='%s' AND id='%s'",
+        $_SESSION["user_id"],
+        $_GET["exercise_id"]
+    );
+    $exres = $mysqli->query($exsql);
+    $ex = $exres->fetch_all()[0];
 }
 
 // while ($exercises = $res->fetch_assoc()) {
@@ -37,11 +45,13 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
 </head>
 
 <body>
-    <h1>Logs of this exercise (<?= $res->num_rows ?>)</h1>
-    <a href="index.php">Home</a>
-    <a href="exercises.php">
-        <button class="btn btn-primary">See all exercises</button></a>
-    <?php if ($res->num_rows === 0) : ?>
+    <h1><?= $ex[1] ?></h1>
+    <h3>Description: </h3>
+    <p><?= $ex[3] ?></p>
+    <a href="edit.php?id=<?= $ex[0] ?>">Edit</a>
+    <h2>Logs of this exercise (<?= $wktres->num_rows ?>)</h2>
+
+    <?php if ($wktres->num_rows === 0) : ?>
         <h3>No workouts in this session.</h3>
     <?php else : ?>
         <table>
@@ -51,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
                 <th>Weight (in kg)</th>
             </tr>
 
-            <?php foreach ($arr as $i) : ?>
+            <?php foreach ($wkt as $i) : ?>
                 <tr>
                     <td><?= $i[4] ?></td>
                     <td><?= $i[5] ?></td>
@@ -61,7 +71,9 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             <?php endforeach; ?>
         </table>
     <?php endif; ?>
-
+    <a href="../index.php">Home</a>
+    <a href="index.php">
+        <button class="btn btn-primary">See all exercises</button></a>
 </body>
 
 </html>

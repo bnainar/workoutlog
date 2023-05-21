@@ -25,11 +25,11 @@ if (isset($_SESSION["user_id"])) {
     <p>Hi <?= $user["name"] ?></p>
     <a href="logout.php">Logout</a>
     <h2>Exercises</h2>
-    <a href="create_exercise.php"><button>Add Exercises +</button></a>
-    <a href="exercises.php"><button>See all...</button></a>
+    <a href="exercises/create.php"><button>Add Exercises +</button></a>
+    <a href="exercises/"><button>See all...</button></a>
     <h2>Workout sessions</h2>
-    <a href="create_session.php"><button>Add a session +</button></a>
-    <a href="sessions.php"><button>See all...</button></a>
+    <a href="sessions/create.php"><button>Add a session +</button></a>
+    <a href="sessions/"><button>See all...</button></a>
 </body>
 
 </html>
