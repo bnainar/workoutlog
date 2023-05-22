@@ -5,28 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SignUp</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css"
-    />
+    <link rel="stylesheet" href="./bootstrap.min.css" />
+    <!-- <link rel="stylesheet" href="../styles.css" /> -->
   </head>
-  <body>
-    <h1>Signup to Workout Logger 💪🏻</h1>
-    <form action="process-signup.php" method="post">
-      <label for="name">Name</label>
-      <input type="text" name="name" id="name" />
+  <body style="background-color: #eceff1">
+    <div class="container-lg mx-auto my-auto pt-5" style="max-width: 500px">
+      <h1>Signup to Workout Logger</h1>
+      <form action="process-signup.php" method="post">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" name="name" id="name" class="form-control" />
 
-      <label for="email">Email</label>
-      <input type="email" name="email" id="email" />
+        <label for="email" class="form-label">Email</label>
+        <input type="email" name="email" id="email" class="form-control" />
 
-      <label for="password">Password</label>
-      <input type="password" name="password" id="password" />
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          class="form-control"
+        />
 
-      <label for="passwordrepeat">Re-enter the password</label>
-      <input type="password" name="passwordrepeat" id="passwordrepeat" />
+        <label for="passwordrepeat" class="form-label"
+          >Re-enter the password</label
+        >
+        <input
+          type="password"
+          name="passwordrepeat"
+          id="passwordrepeat"
+          class="form-control"
+        />
 
-      <input type="submit" value="SignUp" />
-    </form>
-    <p>Already have an account? <a href="login.php">Log in</a> now.</p>
+        <input type="submit" value="Sign up" class="btn btn-primary mt-3" />
+      </form>
+      <p>Already have an account? <a href="login.php">Log in</a> now.</p>
+    </div>
   </body>
 </html>

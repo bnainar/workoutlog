@@ -54,11 +54,11 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
     <link rel="stylesheet" href="../styles.css" />
 </head>
 
-<body>
+<body style="background-color:#FFEBEE;">
     <div class="container px-0 mx-0" style="min-width:100%;" id="navcont">
         <nav class="navbar navbar-expand-lg bg-body-tertiary" style="padding:1rem 2rem;">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">WorkoutLogger</a>
+                <span class="navbar-brand">WorkoutLogger</span>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -73,15 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
                         <li class="nav-item">
                             <a class="nav-link" href="../sessions/">Sessions</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Account
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Logout</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                            </ul>
-                        </li>
+
                     </ul>
                 </div>
             </div>
@@ -96,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             <input type="hidden" name="id" value="<?= $exercise[0] ?>">
             <label for="name" class="form-label">Exercise Name</label>
             <input type="text" name="name" id="name" required value="<?= $exercise[1] ?>" class="form-control">
-            <label for="desc" class="form-label">Description (optional)</label>
+            <label for="desc" class="form-label">Description</label>
             <textarea name="desc" id="desc" cols="60" rows="8" class="form-control"><?= $exercise[3] ?></textarea>
             <input type="submit" value="Update exercise" class="btn btn-primary my-3">
         </form>

@@ -1,9 +1,6 @@
 div.container-lg#navcont {
     background-color: white;
 }
-body {
-    background-color: #EFEBE9 !important;
-}
 a {
     text-decoration: none;
     color: black;
@@ -14,7 +11,7 @@ a {
 }
 
 .card:hover {
-    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
 }
 input[type="text"],
 input[type="number"],

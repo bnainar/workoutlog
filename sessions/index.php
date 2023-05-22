@@ -27,11 +27,11 @@ $arr = $res->fetch_all();
     <link rel="stylesheet" href="../feathericon.min.css" />
 </head>
 
-<body>
+<body style="background-color:#EFEBE9;">
     <div class="container px-0 mx-0" style="min-width:100%;" id="navcont">
         <nav class="navbar navbar-expand-lg bg-body-tertiary" style="padding:1rem 2rem;">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">WorkoutLogger</a>
+                <span class="navbar-brand">WorkoutLogger</span>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -45,15 +45,6 @@ $arr = $res->fetch_all();
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="./index.php">Sessions</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Account
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Logout</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -80,7 +71,7 @@ $arr = $res->fetch_all();
                                             <div class="col">
                                                 <i data-feather="list"></i>
                                                 <h6 class="my-1">No of workouts: </h6>
-                                                <p><?= $i[2] ?></p>
+                                                <p><?= $i[5] ?></p>
                                                 <i data-feather="zap"></i>
                                                 <h6 class="my-1">Calories burned: </h6>
                                                 <p><?= $i[2] ?></p>

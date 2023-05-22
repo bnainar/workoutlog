@@ -40,34 +40,26 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
     <link rel="stylesheet" href="../styles.css" />
 </head>
 
-<body>
+<body style="background-color:#FFEBEE;">
     <div class="container px-0 mx-0" style="min-width:100%;" id="navcont">
         <nav class="navbar navbar-expand-lg bg-body-tertiary" style="padding:1rem 2rem;">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">WorkoutLogger</a>
+                <span class="navbar-brand">WorkoutLogger</span>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                     <ul class="navbar-nav ">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="../index.php">Home</a>
+                            <a class="nav-link" aria-current="page" href="../">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="./index.php">Exercises</a>
+                            <a class="nav-link active" href="./">Exercises</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../sessions/">Sessions</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Account
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Logout</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                            </ul>
-                        </li>
+
                     </ul>
                 </div>
             </div>
@@ -78,10 +70,10 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
         <h3>Description: </h3>
         <p><?= $ex[3] ?></p>
         <a href="edit.php?id=<?= $ex[0] ?>"><button class="btn btn-primary">Edit</button></a>
-        <h2>Logs of this exercise (<?= $wktres->num_rows ?>)</h2>
+        <h2 class="my-3">Logs of this exercise (<?= $wktres->num_rows ?>)</h2>
 
         <?php if ($wktres->num_rows === 0) : ?>
-            <h3>No workouts in this session.</h3>
+            <h3>No logs of this exercises has been added yet.</h3>
         <?php else : ?>
             <table class="table table-secondary">
                 <thead>

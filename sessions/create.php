@@ -38,11 +38,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <link rel="stylesheet" href="../styles.css" />
 </head>
 
-<body>
+<body style="background-color:#EFEBE9;">
     <div class="container px-0 mx-0" style="min-width:100%;" id="navcont">
         <nav class="navbar navbar-expand-lg bg-body-tertiary" style="padding:1rem 2rem;">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">WorkoutLogger</a>
+                <span class="navbar-brand">WorkoutLogger</span>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -57,15 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         <li class="nav-item">
                             <a class="nav-link active" href="./index.php">Sessions</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Account
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Logout</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                            </ul>
-                        </li>
+
                     </ul>
                 </div>
             </div>

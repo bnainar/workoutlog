@@ -31,12 +31,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <link rel="stylesheet" href="./bootstrap.min.css" />
 </head>
 
-<body style="background-color: var(--bs-gray-200);">
+<body style="background-color:#ECEFF1;">
   <div class="container-lg mx-auto my-auto pt-5" style="max-width: 500px;">
-    <h1>Login to Workout Logger ▶️</h1>
+    <h1>Login to Workout Logger </h1>
     <?php if ($is_invalid) : ?>
       <div class="alert alert-warning mt-3" role="alert" style="max-width: 400px;">
         Invalid login credentials. Try again</div>
