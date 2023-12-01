@@ -12,9 +12,7 @@ Technologies used: MySQL, PHP, XAMPP & Bootstrap.css
 - Tracking workout duration and calories burned
 - Adding notes to workouts for additional information
 
+## Images
 ![Image of all added sessions](screenshots/session.png)
-
-## Additional Images
-
 ![Image of creating a exercise](screenshots/exercise.png)
 ![Image of the app index page showing all workouts and sessions](screenshots/index.png)
